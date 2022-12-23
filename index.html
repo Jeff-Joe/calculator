@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="calc">
+      <div class="title">
+        <h1>Calculator</h1>
+      </div>
+      <div class="screen">
+        <form name="form">
+          <input id="screen" name="screen" type="text" readonly placeholder="0">
+        </form>
+      </div>
+      <div class="calc-body">
+        <button class="num" onclick="document.form.screen.value += '('">(</button>
+        <button class="num" onclick="document.form.screen.value += ')'">)</button>
+        <button class="num" onclick="document.form.screen.value += '%'">%</button>
+        <button class="num" onclick="del()">CE</button>
+        <button class="num" onclick="document.form.screen.value += '7'">7</button>
+        <button class="num" onclick="document.form.screen.value += '8'">8</button>
+        <button class="num" onclick="document.form.screen.value += '9'">9</button>
+        <button class="num" onclick="document.form.screen.value += '/'">/</button>
+        <button class="num" onclick="document.form.screen.value += '4'">4</button>
+        <button class="num" onclick="document.form.screen.value += '5'">5</button>
+        <button class="num" onclick="document.form.screen.value += '6'">6</button>
+        <button class="num" onclick="document.form.screen.value += '*'">*</button>
+        <button class="num" onclick="document.form.screen.value += '1'">1</button>
+        <button class="num" onclick="document.form.screen.value += '2'">2</button>
+        <button class="num" onclick="document.form.screen.value += '3'">3</button>
+        <button class="num" onclick="document.form.screen.value += '-'">-</button>
+        <button class="num" onclick="document.form.screen.value += '0'">0</button>
+        <button class="num" onclick="document.form.screen.value += '.'">.</button>
+        <button class="num" onclick="equals()">=</button>
+        <button class="num" onclick="document.form.screen.value += '+'">+</button>
+      </div>
+    </div>
+	<script type="text/javascript">
+    function equals() {
+      document.form.screen.value = eval(document.form.screen.value);
+      sessionStorage.setItem("clearAll", true);
+    }
+
+    function del() {
+      if(sessionStorage.getItem("clearAll")) {
+        document.form.screen.value = "";
+      } else {
+        let value = document.form.screen.value;
+        value = value.substr(0, value.length - 1);
+        document.form.screen.value = value;
+      }
+    }
+  </script>
+  </body>
+</html>
